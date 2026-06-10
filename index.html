@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Acadêmico - Professor</title>
+    <link rel="stylesheet" href="estilo.css">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- Menu Superior -->
+        <nav class="menu-superior">
+            <div class="logo">
+                <h2>📚 Sistema Acadêmico</h2>
+            </div>
+            <div class="turmas-menu">
+                <button class="turma-btn" data-turma="1adm">1º Administração</button>
+                <button class="turma-btn" data-turma="1amb">1º Controle Ambiental</button>
+                <button class="turma-btn" data-turma="2ds">2º Desenvolvimento</button>
+                <button class="turma-btn" data-turma="inf1">Informática - Mód I</button>
+                <button class="turma-btn" data-turma="inf5">Informática - Mód V</button>
+            </div>
+            <div>
+                <button id="btnTema" class="btn-tema">🌙 Tema Escuro</button>
+            </div>
+        </nav>
+
+        <!-- Conteúdo Principal -->
+        <main class="conteudo">
+            <div id="turmaTitulo" class="turma-titulo"></div>
+
+            <!-- Abas -->
+            <div class="abas">
+                <button class="aba-btn active" data-aba="notas">📝 Notas Trimestrais</button>
+                <button class="aba-btn" data-aba="presenca">📋 Lista de Presença</button>
+                <button class="aba-btn" data-aba="vistos">⭐ Vistos/Punições</button>
+                <button class="aba-btn" data-aba="relatorios">📊 Relatórios</button>
+            </div>
+
+            <!-- NOTAS -->
+            <div id="abaNotas" class="aba-conteudo active">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Lançamento de Notas Trimestrais</h3>
+                        <div class="disciplina-selector">
+                            <label>Disciplina:</label>
+                            <select id="disciplinaNotas" class="select-disciplina"></select>
+                        </div>
+                    </div>
+                    <div class="tabela-container">
+                        <table class="tabela-notas" id="tabelaNotas">
+                            <thead>
+                                <tr>
+                                    <th>Aluno</th>
+                                    <th>NM1</th>
+                                    <th>NM2</th>
+                                    <th>NM3</th>
+                                    <th>Média Final</th>
+                                    <th>Status</th>
+                                    <th>Exame Final</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyNotas"></tbody>
+                        </table>
+                    </div>
+                    <div class="acoes-card">
+                        <button id="salvarNotas" class="btn btn-salvar">💾 Salvar Notas</button>
+                        <button id="exportarNotas" class="btn btn-exportar">📊 Exportar Notas</button>
+                        <button id="aplicarRecuperacao" class="btn btn-salvar">📖 Aplicar Recuperação Final</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRESENÇA -->
+            <div id="abaPresenca" class="aba-conteudo">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Lista de Presença</h3>
+                        <div class="filtros-presenca">
+                            <div class="campo">
+                                <label>Data da Aula:</label>
+                                <input type="date" id="dataAula">
+                            </div>
+                            <button id="adicionarAula" class="btn btn-pequeno">➕ Nova Aula</button>
+                        </div>
+                    </div>
+                    <div id="aulasContainer" class="aulas-container"></div>
+                    <div class="acoes-card">
+                        <button id="salvarPresenca" class="btn btn-salvar">💾 Salvar Presenças</button>
+                        <button id="exportarPresenca" class="btn btn-exportar">📊 Exportar Frequência</button>
+                        <button id="verificarFaltas" class="btn btn-salvar">⚠️ Verificar Limite de Faltas</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VISTOS E PUNIÇÕES -->
+            <div id="abaVistos" class="aba-conteudo">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Registro de Vistos e Punições</h3>
+                        <div class="filtros-vistos">
+                            <div class="campo">
+                                <label>Data:</label>
+                                <input type="date" id="dataVisto">
+                            </div>
+                            <div class="campo">
+                                <label>Descrição:</label>
+                                <input type="text" id="descVisto" placeholder="Descrição da atividade">
+                            </div>
+                            <select id="tipoRegistro" style="padding: 8px; border-radius: 6px;">
+                                <option value="visto">⭐ Visto Positivo</option>
+                                <option value="advertencia">⚠️ Advertência</option>
+                                <option value="suspensao">🚫 Suspensão</option>
+                            </select>
+                            <button id="adicionarVisto" class="btn btn-pequeno">➕ Adicionar</button>
+                        </div>
+                    </div>
+                    <div class="tabela-container">
+                        <table class="tabela-vistos" id="tabelaVistos">
+                            <thead>
+                                <tr>
+                                    <th>Aluno</th>
+                                    <th>Selos</th>
+                                    <th>Vistos (+) </th>
+                                    <th>Advertências</th>
+                                    <th>Suspensões</th>
+                                    <th>Última Atividade</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyVistos"></tbody>
+                        </table>
+                    </div>
+                    <div class="acoes-card">
+                        <button id="salvarVistos" class="btn btn-salvar">💾 Salvar</button>
+                        <button id="exportarVistos" class="btn btn-exportar">📊 Exportar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RELATÓRIOS -->
+            <div id="abaRelatorios" class="aba-conteudo">
+                <div class="card">
+                    <h3>Relatórios Gerenciais</h3>
+                    <div class="relatorios-grid">
+                        <div class="relatorio-card">
+                            <h4>📈 Resumo de Notas</h4>
+                            <div id="resumoNotas"></div>
+                        </div>
+                        <div class="relatorio-card">
+                            <h4>📊 Frequência Geral</h4>
+                            <div id="resumoFrequencia"></div>
+                            <div id="alertasFrequencia"></div>
+                        </div>
+                        <div class="relatorio-card">
+                            <h4>⭐ Alunos Destaque (Ranking)</h4>
+                            <div id="alunosDestaque"></div>
+                        </div>
+                        <div class="relatorio-card">
+                            <h4>🏆 Ranking de Participação</h4>
+                            <div id="rankingParticipacao"></div>
+                        </div>
+                        <div class="relatorio-card">
+                            <h4>⚠️ Alunos em Recuperação</h4>
+                            <div id="alunosRecuperacao"></div>
+                        </div>
+                        <div class="relatorio-card">
+                            <h4>🚨 Alunos com Baixa Frequência</h4>
+                            <div id="alunosBaixaFrequencia"></div>
+                        </div>
+                    </div>
+                    <div class="acoes-card">
+                        <button id="exportarRelatorioGeral" class="btn btn-exportar">📊 Exportar Excel</button>
+                        <button id="exportarPDF" class="btn btn-exportar">📄 Exportar PDF</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para Comentários/Observações -->
+    <div id="modalComentario" class="modal">
+        <div class="modal-conteudo">
+            <span class="modal-fechar">&times;</span>
+            <h3>📝 Observações do Aluno</h3>
+            <div id="comentarioAlunoNome" style="color: #2c5aa0; margin-bottom: 15px;"></div>
+            <textarea id="modalComentarioTexto" rows="4" placeholder="Digite suas observações sobre o aluno..."></textarea>
+            <div style="margin-top: 15px;">
+                <button id="modalSalvarComentario" class="btn btn-salvar">💾 Salvar</button>
+            </div>
+            <hr style="margin: 15px 0;">
+            <h4>Histórico de Observações</h4>
+            <div id="historicoComentarios" style="max-height: 200px; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <!-- Modal para Histórico Detalhado -->
+    <div id="modalHistorico" class="modal">
+        <div class="modal-conteudo">
+            <span class="modal-fechar">&times;</span>
+            <h3>📜 Histórico Completo</h3>
+            <div id="historicoAlunoNome" style="color: #2c5aa0; margin-bottom: 15px;"></div>
+            <div id="historicoCompleto"></div>
+        </div>
+    </div>
+
+    <!-- Modal para Anexar Arquivos -->
+    <div id="modalArquivo" class="modal">
+        <div class="modal-conteudo">
+            <span class="modal-fechar">&times;</span>
+            <h3>📎 Anexar Arquivo</h3>
+            <div id="arquivoAlunoNome" style="color: #2c5aa0; margin-bottom: 15px;"></div>
+            <div class="campo">
+                <label>Tipo:</label>
+                <select id="tipoArquivo">
+                    <option value="atividade">📝 Atividade</option>
+                    <option value="prova">📄 Prova</option>
+                    <option value="aviso">📢 Aviso</option>
+                    <option value="outro">📁 Outro</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label>Descrição:</label>
+                <input type="text" id="descricaoArquivo" placeholder="Ex: Prova Bimestral">
+            </div>
+            <div class="campo">
+                <label>Arquivo:</label>
+                <input type="file" id="arquivoUpload">
+            </div>
+            <div style="margin-top: 15px;">
+                <button id="modalSalvarArquivo" class="btn btn-salvar">📤 Anexar</button>
+            </div>
+            <hr style="margin: 15px 0;">
+            <h4>Arquivos Anexados</h4>
+            <div id="listaArquivos" style="max-height: 200px; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
