@@ -1,0 +1,12 @@
+{
+    "gentil": {
+        "nome": "CETI Antonio Gentil Dantas Sobrinho",
+        "turno": "Diurno",
+        "icone": "fa-sun"
+    },
+    "eneas": {
+        "nome": "Unidade Escolar Eneas Nogueira",
+        "turno": "Noturno",
+        "icone": "fa-moon"
+    }
+}

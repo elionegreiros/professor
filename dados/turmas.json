@@ -1,1 +1,34 @@
-
+{
+  "1º Administração": {
+    "disciplinas": ["Inteligência Artificial"],
+    "arquivo_alunos": "alunos_1_adm.json"
+  },
+  "1º Controle Ambiental": {
+    "disciplinas": ["Inteligência Artificial"],
+    "arquivo_alunos": "alunos_1_ambiental.json"
+  },
+  "2º Desenvolvimento de Sistemas": {
+    "disciplinas": [
+      "Inteligência Artificial",
+      "MENTORIAS TEC II",
+      "FUNDAMENTOS DE UI / UX OU IHC",
+      "PENSAMENTO COMPUTACIONAL II",
+      "PROGRAMAÇÃO ESTRUTURADA",
+      "PROGRAMAÇÃO ORIENTADA À OBJETOS - POO",
+      "PROGRAMAÇÃO PARA DISPOSITIVOS MÓVEIS",
+      "PROGRAMAÇÃO WEB FRONT-END",
+      "ARQUITETURA DE MICROSSERVIÇOS",
+      "INTRODUÇÃO AO ECOSSISTEMA DEVops",
+      "MANUTENÇÃO DE SISTEMAS"
+    ],
+    "arquivo_alunos": "alunos_2_desenvolvimento.json"
+  },
+  "INFORMÁTICA - MÓDULO I": {
+    "disciplinas": ["Análise e Lógica de Programação"],
+    "arquivo_alunos": "alunos_informatica_mod1.json"
+  },
+  "INFORMÁTICA - MÓDULO V": {
+    "disciplinas": ["Empreendedorismo para TI"],
+    "arquivo_alunos": "alunos_informatica_mod5.json"
+  }
+}
