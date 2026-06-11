@@ -31,6 +31,8 @@
             --warning: #c97e2a;
             --danger: #c53a3a;
             --info: #3a7ca5;
+            --purple: #6b4e9e;
+            --orange: #e67e22;
             
             --day-school: #2e7d64;
             --night-school: #6b4e9e;
@@ -55,6 +57,7 @@
             --radius-md: 8px;
             --radius-lg: 12px;
             --radius-xl: 16px;
+            --radius-2xl: 20px;
             
             --transition: all 0.2s ease;
         }
@@ -102,8 +105,8 @@
         /* ===== LAYOUT GRID ===== */
         .app {
             min-height: 100vh;
-            display: grid;
-            grid-template-rows: auto 1fr auto;
+            display: flex;
+            flex-direction: column;
         }
 
         /* ===== HEADER ===== */
@@ -198,18 +201,19 @@
             border-color: var(--primary);
         }
 
-        /* ===== CONTAINER PRINCIPAL (GRID) ===== */
+        /* ===== CONTAINER PRINCIPAL ===== */
         .main-container {
             display: grid;
-            grid-template-columns: 320px 1fr 320px;
+            grid-template-columns: 300px 1fr 320px;
             gap: 24px;
             padding: 24px;
             max-width: 1600px;
             margin: 0 auto;
             width: 100%;
+            flex: 1;
         }
 
-        /* ===== ASIDE ESQUERDO - ESCOLAS E TURMAS ===== */
+        /* ===== ASIDE ESQUERDO ===== */
         .aside-left {
             background: var(--bg-sidebar);
             border-radius: var(--radius-xl);
@@ -227,6 +231,9 @@
             color: var(--text-muted);
             margin-bottom: 16px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .escolas-list {
@@ -362,12 +369,220 @@
             color: white;
         }
 
-        /* ===== MAIN ===== */
+        /* ===== MAIN CONTENT ===== */
         .main-content {
             background: var(--bg-main);
             border-radius: var(--radius-xl);
             border: 1px solid var(--border);
             padding: 24px;
+        }
+
+        /* Dashboard Cards */
+        .dashboard-hero {
+            margin-bottom: 32px;
+        }
+
+        .welcome-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius-xl);
+            padding: 28px;
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .welcome-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .welcome-card p {
+            opacity: 0.9;
+            font-size: 0.875rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-bg);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .stat-icon i {
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            margin-bottom: 32px;
+        }
+
+        .quick-actions h3 {
+            font-size: 1rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .action-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text-primary);
+            display: block;
+        }
+
+        .action-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .action-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--primary-bg);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+
+        .action-icon i {
+            font-size: 28px;
+            color: var(--primary);
+        }
+
+        .action-card h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .action-card p {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* Recent Activity */
+        .recent-activity {
+            margin-bottom: 32px;
+        }
+
+        .recent-activity h3 {
+            font-size: 1rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .activity-list {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-item:hover {
+            background: var(--bg-hover);
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-bg);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .activity-icon i {
+            font-size: 18px;
+            color: var(--primary);
+        }
+
+        .activity-info {
+            flex: 1;
+        }
+
+        .activity-title {
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 2px;
+        }
+
+        .activity-date {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .activity-action {
+            font-size: 0.75rem;
+            color: var(--primary);
         }
 
         /* Alert Banner */
@@ -377,7 +592,7 @@
             padding: 16px 20px;
             border-radius: var(--radius-lg);
             margin-bottom: 24px;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
@@ -466,115 +681,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Cards Grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 24px;
-        }
-
-        .stat-card {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .stat-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--primary-bg);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-        }
-
-        .stat-icon i {
-            font-size: 24px;
-            color: var(--primary);
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .stat-label {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-
-        /* Charts Grid */
-        .charts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 20px;
-            margin-bottom: 24px;
-        }
-
-        .chart-card {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            border: 1px solid var(--border);
-        }
-
-        .chart-card h3 {
-            font-size: 1rem;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        canvas {
-            max-height: 250px;
-        }
-
-        /* Tabelas */
-        .table-wrapper {
-            overflow-x: auto;
-            margin-top: 16px;
-        }
-
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .data-table th {
-            text-align: left;
-            padding: 12px;
-            background: var(--bg-hover);
-            font-weight: 600;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-muted);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .data-table td {
-            padding: 12px;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.875rem;
-        }
-
-        .data-table tr:hover td {
-            background: var(--bg-hover);
-        }
-
-        /* Grade de Horários */
+        /* Schedule Grid */
         .schedule-grid {
             overflow-x: auto;
         }
@@ -651,7 +758,49 @@
         .status-dot.pending { background: var(--warning); }
         .status-dot.done { background: var(--success); }
 
-        /* Botões */
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 16px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px;
+            background: var(--bg-hover);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.875rem;
+        }
+
+        .data-table tr:hover td {
+            background: var(--bg-hover);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        /* Buttons */
         .btn {
             padding: 8px 16px;
             border: none;
@@ -686,7 +835,7 @@
             margin-top: 20px;
         }
 
-        /* Aulas Container */
+        /* Lessons Container */
         .lessons-container {
             display: flex;
             flex-direction: column;
@@ -722,6 +871,120 @@
             display: flex;
             align-items: center;
             gap: 8px;
+        }
+
+        /* Charts */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .chart-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .chart-card h3 {
+            font-size: 1rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        canvas {
+            max-height: 250px;
+        }
+
+        /* Aside Right */
+        .aside-right {
+            background: var(--bg-sidebar);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border);
+            padding: 20px;
+            height: fit-content;
+            position: sticky;
+            top: 94px;
+        }
+
+        .info-card {
+            margin-bottom: 24px;
+        }
+
+        .info-card h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.875rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: var(--text-muted);
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .progress-bar {
+            background: var(--bg-body);
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-fill {
+            background: var(--success);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+
+        .shortcuts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .shortcut-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.75rem;
+        }
+
+        .shortcut-key {
+            background: var(--bg-body);
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+            font-size: 0.7rem;
+            border: 1px solid var(--border);
         }
 
         /* Modal */
@@ -825,94 +1088,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* ===== ASIDE DIREITO ===== */
-        .aside-right {
-            background: var(--bg-sidebar);
-            border-radius: var(--radius-xl);
-            border: 1px solid var(--border);
-            padding: 20px;
-            height: fit-content;
-            position: sticky;
-            top: 94px;
-        }
-
-        .info-card {
-            margin-bottom: 24px;
-        }
-
-        .info-card h4 {
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .info-list {
-            list-style: none;
-        }
-
-        .info-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.875rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .info-list li:last-child {
-            border-bottom: none;
-        }
-
-        .info-label {
-            color: var(--text-muted);
-        }
-
-        .info-value {
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .progress-bar {
-            background: var(--bg-body);
-            border-radius: 10px;
-            height: 8px;
-            overflow: hidden;
-            margin-top: 8px;
-        }
-
-        .progress-fill {
-            background: var(--success);
-            height: 100%;
-            border-radius: 10px;
-            transition: width 0.3s;
-        }
-
-        .shortcuts-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .shortcut-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.75rem;
-        }
-
-        .shortcut-key {
-            background: var(--bg-body);
-            padding: 4px 8px;
-            border-radius: var(--radius-sm);
-            font-family: monospace;
-            font-size: 0.7rem;
-            border: 1px solid var(--border);
-        }
-
-        /* ===== FOOTER ===== */
         .footer {
             background: var(--bg-header);
             border-top: 1px solid var(--border);
@@ -923,13 +1098,16 @@
             margin-top: 24px;
         }
 
-        /* Responsivo */
+        /* Responsive */
         @media (max-width: 1200px) {
             .main-container {
                 grid-template-columns: 280px 1fr;
             }
             .aside-right {
                 display: none;
+            }
+            .stats-grid, .actions-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -947,8 +1125,11 @@
             .search-box input {
                 width: 150px;
             }
-            .charts-grid {
+            .stats-grid, .actions-grid, .charts-grid {
                 grid-template-columns: 1fr;
+            }
+            .welcome-card {
+                padding: 20px;
             }
         }
     </style>
@@ -981,9 +1162,9 @@
             </div>
         </header>
 
-        <!-- MAIN CONTAINER (GRID) -->
+        <!-- MAIN CONTAINER -->
         <div class="main-container">
-            <!-- ASIDE LEFT - Escolas e Turmas -->
+            <!-- ASIDE LEFT -->
             <aside class="aside-left">
                 <div class="section-title">
                     <i class="fas fa-school"></i> MINHAS ESCOLAS
@@ -1046,15 +1227,104 @@
 
                 <!-- Navigation Tabs -->
                 <nav class="nav-tabs">
-                    <button class="nav-tab active" data-tab="schedule"><i class="fas fa-calendar-week"></i> Horários</button>
+                    <button class="nav-tab active" data-tab="dashboard"><i class="fas fa-home"></i> Início</button>
+                    <button class="nav-tab" data-tab="schedule"><i class="fas fa-calendar-week"></i> Horários</button>
                     <button class="nav-tab" data-tab="grades"><i class="fas fa-edit"></i> Notas</button>
                     <button class="nav-tab" data-tab="attendance"><i class="fas fa-calendar-check"></i> Presença</button>
                     <button class="nav-tab" data-tab="stars"><i class="fas fa-star"></i> Vistos</button>
                     <button class="nav-tab" data-tab="reports"><i class="fas fa-chart-pie"></i> Relatórios</button>
                 </nav>
 
-                <!-- Section: Horários -->
-                <section id="tabSchedule" class="section active">
+                <!-- SECTION: DASHBOARD (INÍCIO) -->
+                <section id="tabDashboard" class="section active">
+                    <!-- Welcome Card -->
+                    <div class="dashboard-hero">
+                        <div class="welcome-card">
+                            <h2>Olá, Professor! 👋</h2>
+                            <p>Bem-vindo ao seu painel de controle. Aqui você tem uma visão geral do seu dia.</p>
+                        </div>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card" onclick="document.querySelector('.nav-tab[data-tab=\'grades\']').click()">
+                            <div class="stat-icon"><i class="fas fa-users"></i></div>
+                            <div class="stat-value" id="statTotalAlunos">0</div>
+                            <div class="stat-label">Total de Alunos</div>
+                        </div>
+                        <div class="stat-card" onclick="document.querySelector('.nav-tab[data-tab=\'grades\']').click()">
+                            <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="stat-value" id="statAprovados">0</div>
+                            <div class="stat-label">Aprovados</div>
+                        </div>
+                        <div class="stat-card" onclick="document.querySelector('.nav-tab[data-tab=\'grades\']').click()">
+                            <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="stat-value" id="statMediaGeral">0</div>
+                            <div class="stat-label">Média Geral</div>
+                        </div>
+                        <div class="stat-card" onclick="document.querySelector('.nav-tab[data-tab=\'stars\']').click()">
+                            <div class="stat-icon"><i class="fas fa-star"></i></div>
+                            <div class="stat-value" id="statTotalVistos">0</div>
+                            <div class="stat-label">Total de Vistos</div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <h3><i class="fas fa-bolt"></i> Ações Rápidas</h3>
+                        <div class="actions-grid">
+                            <div class="action-card" onclick="document.querySelector('.nav-tab[data-tab=\'grades\']').click()">
+                                <div class="action-icon"><i class="fas fa-edit"></i></div>
+                                <h4>Lançar Notas</h4>
+                                <p>Registrar notas dos alunos</p>
+                            </div>
+                            <div class="action-card" onclick="document.querySelector('.nav-tab[data-tab=\'attendance\']').click()">
+                                <div class="action-icon"><i class="fas fa-calendar-check"></i></div>
+                                <h4>Registrar Presença</h4>
+                                <p>Marcar frequência</p>
+                            </div>
+                            <div class="action-card" onclick="document.getElementById('adicionarAulaRapido')?.click() || document.querySelector('.nav-tab[data-tab=\'attendance\']').click()">
+                                <div class="action-icon"><i class="fas fa-plus-circle"></i></div>
+                                <h4>Nova Aula</h4>
+                                <p>Adicionar aula do dia</p>
+                            </div>
+                            <div class="action-card" onclick="document.querySelector('.nav-tab[data-tab=\'stars\']').click()">
+                                <div class="action-icon"><i class="fas fa-star"></i></div>
+                                <h4>Dar Visto</h4>
+                                <p>Registrar participação</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Próximas Aulas -->
+                    <div class="recent-activity">
+                        <h3><i class="fas fa-calendar-week"></i> Próximas Aulas</h3>
+                        <div class="activity-list" id="proximasAulasList">
+                            <div class="activity-item">
+                                <div class="activity-icon"><i class="fas fa-spinner fa-pulse"></i></div>
+                                <div class="activity-info">
+                                    <div class="activity-title">Carregando...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Atividades Recentes -->
+                    <div class="recent-activity">
+                        <h3><i class="fas fa-history"></i> Atividades Recentes</h3>
+                        <div class="activity-list" id="atividadesRecentes">
+                            <div class="activity-item">
+                                <div class="activity-icon"><i class="fas fa-spinner fa-pulse"></i></div>
+                                <div class="activity-info">
+                                    <div class="activity-title">Carregando...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: HORÁRIOS -->
+                <section id="tabSchedule" class="section">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
                         <h2><i class="fas fa-calendar-week"></i> Grade de Horários</h2>
                         <button id="marcarTodasHoje" class="btn btn-success btn-sm">
@@ -1078,7 +1348,7 @@
                     </div>
                 </section>
 
-                <!-- Section: Notas -->
+                <!-- SECTION: NOTAS -->
                 <section id="tabGrades" class="section">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 16px;">
                         <h2><i class="fas fa-edit"></i> Lançamento de Notas</h2>
@@ -1101,7 +1371,7 @@
                     </div>
                 </section>
 
-                <!-- Section: Presença -->
+                <!-- SECTION: PRESENÇA -->
                 <section id="tabAttendance" class="section">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 16px;">
                         <h2><i class="fas fa-calendar-check"></i> Lista de Presença</h2>
@@ -1120,7 +1390,7 @@
                     </div>
                 </section>
 
-                <!-- Section: Vistos -->
+                <!-- SECTION: VISTOS -->
                 <section id="tabStars" class="section">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 16px;">
                         <h2><i class="fas fa-star"></i> Vistos de Participação</h2>
@@ -1142,33 +1412,9 @@
                     </div>
                 </section>
 
-                <!-- Section: Relatórios -->
+                <!-- SECTION: RELATÓRIOS -->
                 <section id="tabReports" class="section">
                     <h2><i class="fas fa-chart-pie"></i> Relatórios Gerenciais</h2>
-                    
-                    <div class="cards-grid">
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-users"></i></div>
-                            <div class="stat-value" id="totalAlunosStat">0</div>
-                            <div class="stat-label">Total de Alunos</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
-                            <div class="stat-value" id="aprovadosStat">0</div>
-                            <div class="stat-label">Aprovados</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
-                            <div class="stat-value" id="mediaGeralStat">0</div>
-                            <div class="stat-label">Média Geral</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-star"></i></div>
-                            <div class="stat-value" id="totalVistosStat">0</div>
-                            <div class="stat-label">Total de Vistos</div>
-                        </div>
-                    </div>
-
                     <div class="charts-grid">
                         <div class="chart-card">
                             <h3><i class="fas fa-chart-bar"></i> Distribuição de Notas</h3>
@@ -1179,14 +1425,13 @@
                             <canvas id="statusChart"></canvas>
                         </div>
                     </div>
-
                     <div class="btn-group">
                         <button id="exportarRelatorioGeral" class="btn btn-success"><i class="fas fa-file-excel"></i> Exportar Relatório Completo</button>
                     </div>
                 </section>
             </main>
 
-            <!-- ASIDE RIGHT - Informações e Atalhos -->
+            <!-- ASIDE RIGHT -->
             <aside class="aside-right">
                 <article class="info-card">
                     <h4><i class="fas fa-chart-simple"></i> Resumo da Turma</h4>
@@ -1306,7 +1551,6 @@
         };
 
         const DIAS_SEMANA = ["SEGUNDA", "TERCA", "QUARTA", "QUINTA", "SEXTA"];
-        const DIAS_SEMANA_PT = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
         
         const TURMAS_CONFIG = {
             "1adm": { nome: "1º Administração", disciplinas: ["Inteligência Artificial"], escola: "gentil" },
@@ -1326,6 +1570,7 @@
         let alunoSelecionadoVisto = null;
         let notasChart = null;
         let statusChart = null;
+        let atividadesRecentes = [];
 
         // Funções Auxiliares
         function mostrarToast(msg, tipo = "success") {
@@ -1365,12 +1610,50 @@
             return { texto: "Sem notas", classe: "" };
         }
 
+        function adicionarAtividade(titulo, tipo) {
+            atividadesRecentes.unshift({
+                titulo: titulo,
+                data: new Date().toISOString(),
+                tipo: tipo
+            });
+            if (atividadesRecentes.length > 10) atividadesRecentes.pop();
+            renderizarAtividadesRecentes();
+        }
+
+        function renderizarAtividadesRecentes() {
+            const container = document.getElementById("atividadesRecentes");
+            if (!container) return;
+            
+            if (atividadesRecentes.length === 0) {
+                container.innerHTML = '<div class="activity-item"><div class="activity-icon"><i class="fas fa-info-circle"></i></div><div class="activity-info"><div class="activity-title">Nenhuma atividade recente</div></div></div>';
+                return;
+            }
+            
+            const icons = {
+                nota: '<i class="fas fa-edit"></i>',
+                presenca: '<i class="fas fa-calendar-check"></i>',
+                visto: '<i class="fas fa-star"></i>',
+                aula: '<i class="fas fa-plus-circle"></i>'
+            };
+            
+            container.innerHTML = atividadesRecentes.slice(0,5).map(act => `
+                <div class="activity-item">
+                    <div class="activity-icon">${icons[act.tipo] || '<i class="fas fa-bell"></i>'}</div>
+                    <div class="activity-info">
+                        <div class="activity-title">${act.titulo}</div>
+                        <div class="activity-date">${formatarData(act.data)} às ${new Date(act.data).toLocaleTimeString().slice(0,5)}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
         // Persistência
         function salvarDados() {
             localStorage.setItem("sistemaAcademicoV2", JSON.stringify({
                 notas: dadosNotas,
                 presenca: dadosPresenca,
-                vistos: dadosVistos
+                vistos: dadosVistos,
+                atividadesRecentes: atividadesRecentes
             }));
         }
 
@@ -1382,6 +1665,7 @@
                     dadosNotas = data.notas || {};
                     dadosPresenca = data.presenca || {};
                     dadosVistos = data.vistos || {};
+                    atividadesRecentes = data.atividadesRecentes || [];
                 } catch(e) {}
             }
             
@@ -1410,6 +1694,7 @@
                 }
             }
             salvarDados();
+            renderizarAtividadesRecentes();
         }
 
         // Aulas Ministradas
@@ -1455,6 +1740,7 @@
             
             salvarAulasMinistradas();
             renderizarHorarios();
+            adicionarAtividade(`Todas as ${horariosHoje.length} aulas de hoje marcadas como ministradas`, "aula");
             mostrarToast(`Todas as ${horariosHoje.length} aulas de hoje marcadas!`, "success");
         }
 
@@ -1577,6 +1863,62 @@
             });
         }
 
+        function renderizarProximasAulas() {
+            const container = document.getElementById("proximasAulasList");
+            if (!container) return;
+            
+            const diaAtual = getDiaAtual();
+            const horaAtual = getHoraAtual();
+            const horariosHoje = HORARIOS[escolaAtual]?.[diaAtual] || [];
+            
+            if (horariosHoje.length === 0) {
+                container.innerHTML = '<div class="activity-item"><div class="activity-icon"><i class="fas fa-calendar-times"></i></div><div class="activity-info"><div class="activity-title">Nenhuma aula programada para hoje</div></div></div>';
+                return;
+            }
+            
+            const aulasFuturas = horariosHoje.filter(aula => aula.horaInicio > horaAtual);
+            const aulaAtual = horariosHoje.find(aula => horaAtual >= aula.horaInicio && horaAtual <= aula.horaFim);
+            
+            let aulasHTML = '';
+            
+            if (aulaAtual) {
+                aulasHTML += `
+                    <div class="activity-item" style="background: var(--primary-bg);">
+                        <div class="activity-icon"><i class="fas fa-play-circle"></i></div>
+                        <div class="activity-info">
+                            <div class="activity-title">🔴 EM ANDAMENTO: ${aulaAtual.disciplina}</div>
+                            <div class="activity-date">${aulaAtual.turma} | ${aulaAtual.horario}</div>
+                        </div>
+                        <div class="activity-action">
+                            <button class="btn btn-warning btn-sm" onclick="document.querySelector('.nav-tab[data-tab=\'attendance\']').click()">Registrar</button>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            aulasFuturas.slice(0, 3).forEach(aula => {
+                const minutosAte = Math.floor((aula.horaInicio - horaAtual) * 60);
+                aulasHTML += `
+                    <div class="activity-item">
+                        <div class="activity-icon"><i class="fas fa-clock"></i></div>
+                        <div class="activity-info">
+                            <div class="activity-title">${aula.disciplina}</div>
+                            <div class="activity-date">${aula.turma} | ${aula.horario} (em ${minutosAte} minutos)</div>
+                        </div>
+                        <div class="activity-action">
+                            <button class="btn btn-outline btn-sm" onclick="document.querySelector('.nav-tab[data-tab=\'schedule\']').click()">Ver</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            if (!aulaAtual && aulasFuturas.length === 0) {
+                aulasHTML = '<div class="activity-item"><div class="activity-icon"><i class="fas fa-check-circle"></i></div><div class="activity-info"><div class="activity-title">Todas as aulas de hoje já passaram!</div></div></div>';
+            }
+            
+            container.innerHTML = aulasHTML;
+        }
+
         // Notas
         function renderizarNotas() {
             const disciplina = document.getElementById("disciplinaNotas").value;
@@ -1614,7 +1956,7 @@
                 });
                 
                 row.insertCell(4).textContent = media.toFixed(1);
-                row.insertCell(5).innerHTML = `<span class="badge ${status.classe}" style="background:${status.classe === 'badge-aprovado' ? '#c6f6d5' : (status.classe === 'badge-recuperacao' ? '#feebc8' : '#fed7d7')}; color:${status.classe === 'badge-aprovado' ? '#276749' : (status.classe === 'badge-recuperacao' ? '#9c4221' : '#9b2c2c')}">${status.texto}</span>`;
+                row.insertCell(5).innerHTML = `<span class="badge" style="background:${status.texto === 'Aprovado' ? '#c6f6d5' : (status.texto === 'Recuperação' ? '#feebc8' : '#fed7d7')}; color:${status.texto === 'Aprovado' ? '#276749' : (status.texto === 'Recuperação' ? '#9c4221' : '#9b2c2c')}">${status.texto}</span>`;
             });
         }
 
@@ -1638,6 +1980,8 @@
             renderizarNotas();
             atualizarGraficos();
             atualizarResumoInfo();
+            atualizarDashboardStats();
+            adicionarAtividade(`Notas da disciplina ${disciplina} salvas`, "nota");
             mostrarToast("Notas salvas!", "success");
         }
 
@@ -1729,6 +2073,7 @@
             
             salvarDados();
             renderizarPresenca();
+            adicionarAtividade(`Nova aula adicionada em ${formatarData(dataAula)}`, "aula");
             mostrarToast(`Aula adicionada para ${formatarData(dataAula)}!`, "success");
             
             document.getElementById("dataAula").value = "";
@@ -1783,11 +2128,12 @@
             salvarDados();
             renderizarVistos();
             document.getElementById("modalVisto").style.display = "none";
+            adicionarAtividade(`Visto concedido para ${alunoSelecionadoVisto}`, "visto");
             mostrarToast("Visto concedido!", "success");
         }
 
         // Relatórios e Gráficos
-        function atualizarResumoInfo() {
+        function atualizarDashboardStats() {
             const disciplina = document.getElementById("disciplinaNotas")?.value || TURMAS_CONFIG[turmaAtual].disciplinas[0];
             const alunos = ALUNOS[turmaAtual];
             let aprovados = 0, recuperacao = 0, reprovados = 0, semNotas = 0;
@@ -1797,6 +2143,28 @@
                 const media = calcularMedia(notas);
                 if (media === 0 && notas.nm1 === "" && notas.nm2 === "" && notas.nm3 === "") semNotas++;
                 else if (media >= 7) aprovados++;
+                else if (media >= 5) recuperacao++;
+                else if (media > 0) reprovados++;
+            });
+            
+            const totalVistos = Object.values(dadosVistos[turmaAtual]?.alunos || {}).reduce((s,v)=>s+(v.total||0),0);
+            
+            document.getElementById("statTotalAlunos") && (document.getElementById("statTotalAlunos").textContent = alunos.length);
+            document.getElementById("statAprovados") && (document.getElementById("statAprovados").textContent = aprovados);
+            document.getElementById("statMediaGeral") && (document.getElementById("statMediaGeral").textContent = (aprovados+recuperacao+reprovados) > 0 ? ((aprovados*7 + recuperacao*6 + reprovados*3)/(aprovados+recuperacao+reprovados)).toFixed(1) : 0);
+            document.getElementById("statTotalVistos") && (document.getElementById("statTotalVistos").textContent = totalVistos);
+        }
+
+        function atualizarResumoInfo() {
+            const disciplina = document.getElementById("disciplinaNotas")?.value || TURMAS_CONFIG[turmaAtual].disciplinas[0];
+            const alunos = ALUNOS[turmaAtual];
+            let aprovados = 0, recuperacao = 0, reprovados = 0;
+            
+            alunos.forEach(aluno => {
+                const notas = dadosNotas[turmaAtual][disciplina]?.[aluno] || {};
+                const media = calcularMedia(notas);
+                if (media === 0 && notas.nm1 === "" && notas.nm2 === "" && notas.nm3 === "") return;
+                if (media >= 7) aprovados++;
                 else if (media >= 5) recuperacao++;
                 else if (media > 0) reprovados++;
             });
@@ -1851,12 +2219,6 @@
                     options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'bottom' } } }
                 });
             }
-            
-            const totalVistos = Object.values(dadosVistos[turmaAtual]?.alunos || {}).reduce((s,v)=>s+(v.total||0),0);
-            document.getElementById("totalAlunosStat") && (document.getElementById("totalAlunosStat").textContent = alunos.length);
-            document.getElementById("aprovadosStat") && (document.getElementById("aprovadosStat").textContent = aprovados);
-            document.getElementById("mediaGeralStat") && (document.getElementById("mediaGeralStat").textContent = (aprovados+recuperacao+reprovados) > 0 ? ((aprovados*7 + recuperacao*6 + reprovados*3)/(aprovados+recuperacao+reprovados)).toFixed(1) : 0);
-            document.getElementById("totalVistosStat") && (document.getElementById("totalVistosStat").textContent = totalVistos);
         }
 
         // Exportações
@@ -1929,7 +2291,7 @@
         }
 
         function fazerBackup() {
-            const backup = { data: new Date().toISOString(), notas: dadosNotas, presenca: dadosPresenca, vistos: dadosVistos, aulasMinistradas };
+            const backup = { data: new Date().toISOString(), notas: dadosNotas, presenca: dadosPresenca, vistos: dadosVistos, aulasMinistradas, atividadesRecentes };
             const blob = new Blob([JSON.stringify(backup, null, 2)], {type: "application/json"});
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
@@ -1981,6 +2343,7 @@
             }
             
             renderizarHorarios();
+            renderizarProximasAulas();
             verificarProximaAula();
         }
 
@@ -2007,10 +2370,12 @@
             renderizarVistos();
             atualizarGraficos();
             atualizarResumoInfo();
+            atualizarDashboardStats();
         }
 
         // Inicialização
         window.marcarAulaMinistrada = marcarAulaMinistrada;
+        window.adicionarAula = adicionarAula;
 
         document.addEventListener("DOMContentLoaded", () => {
             const savedTheme = localStorage.getItem('theme');
@@ -2039,10 +2404,15 @@
                     document.querySelectorAll(".nav-tab").forEach(t => t.classList.remove("active"));
                     document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
                     tab.classList.add("active");
-                    document.getElementById(`tab${tab.dataset.tab.charAt(0).toUpperCase() + tab.dataset.tab.slice(1)}`).classList.add("active");
+                    const tabId = `tab${tab.dataset.tab.charAt(0).toUpperCase() + tab.dataset.tab.slice(1)}`;
+                    document.getElementById(tabId).classList.add("active");
                     if (tab.dataset.tab === "reports") {
                         atualizarGraficos();
                         atualizarResumoInfo();
+                    }
+                    if (tab.dataset.tab === "dashboard") {
+                        atualizarDashboardStats();
+                        renderizarProximasAulas();
                     }
                 });
             });
@@ -2052,6 +2422,7 @@
                 renderizarNotas();
                 atualizarGraficos();
                 atualizarResumoInfo();
+                atualizarDashboardStats();
             });
             document.getElementById("salvarNotas")?.addEventListener("click", salvarNotas);
             document.getElementById("exportarNotas")?.addEventListener("click", exportarNotas);
@@ -2115,4 +2486,3 @@
         });
     </script>
 </body>
-</html>
