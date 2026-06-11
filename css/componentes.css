@@ -1,0 +1,308 @@
+/* ===== BOTÕES MODERNOS ===== */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+}
+
+.btn:active::after {
+    width: 200px;
+    height: 200px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--success), var(--success-dark));
+    color: white;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--danger), var(--danger-dark));
+    color: white;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+}
+
+.btn-pequeno {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+/* ===== TABELAS MODERNAS ===== */
+.tabela-moderna {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.tabela-moderna thead tr {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+}
+
+.tabela-moderna th {
+    color: white;
+    font-weight: 600;
+    padding: 14px 12px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tabela-moderna td {
+    padding: 12px;
+    border-bottom: 1px solid var(--gray-medium);
+    transition: background 0.2s;
+}
+
+.tabela-moderna tbody tr:hover {
+    background: var(--gray-light);
+}
+
+/* ===== INPUTS ESTILIZADOS ===== */
+.input-moderno {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid var(--gray-medium);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    transition: var(--transition);
+    background: white;
+}
+
+.input-moderno:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(44,90,160,0.1);
+}
+
+.input-numero {
+    width: 80px;
+    padding: 8px;
+    text-align: center;
+    border: 2px solid var(--gray-medium);
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.input-numero:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* ===== STATUS BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-aprovado {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.badge-recuperacao {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.badge-reprovado {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.badge-sem-notas {
+    background: var(--gray-medium);
+    color: var(--gray-dark);
+}
+
+/* ===== CHECKBOX PERSONALIZADO ===== */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary);
+}
+
+/* ===== SCROLLBAR PERSONALIZADA ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--gray-medium);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.pulse {
+    animation: pulse 0.5s ease-in-out;
+}
+
+/* ===== LOADING SPINNER ===== */
+.spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--gray-medium);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* ===== TOOLTIP PERSONALIZADO ===== */
+[data-tooltip] {
+    position: relative;
+    cursor: help;
+}
+
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 12px;
+    background: #333;
+    color: white;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+[data-tooltip]:hover:before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ===== NOTIFICAÇÃO TOAST ===== */
+.toast-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: var(--radius-sm);
+    color: white;
+    font-weight: 500;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease-out;
+    box-shadow: var(--shadow-md);
+}
+
+.toast-success {
+    background: linear-gradient(135deg, var(--success), var(--success-dark));
+}
+
+.toast-error {
+    background: linear-gradient(135deg, var(--danger), var(--danger-dark));
+}
+
+.toast-warning {
+    background: linear-gradient(135deg, var(--warning), #e65100);
+}
+
+.toast-info {
+    background: linear-gradient(135deg, var(--info), #0c5460);
+}

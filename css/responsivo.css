@@ -1,0 +1,197 @@
+/* ===== RESPONSIVIDADE OTIMIZADA ===== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .app {
+        padding: 15px;
+    }
+    
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .relatorios-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+/* Mobile Grande */
+@media (max-width: 768px) {
+    .app {
+        padding: 10px;
+    }
+    
+    /* Menu responsivo */
+    .menu-superior {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .turmas-menu {
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .turma-btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+    
+    /* Dashboard responsivo */
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .card-dashboard {
+        padding: 15px;
+    }
+    
+    .card-value {
+        font-size: 1.5rem;
+    }
+    
+    /* Abas responsivas */
+    .abas {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .aba-btn {
+        text-align: center;
+        padding: 10px;
+        border-radius: var(--radius-sm);
+    }
+    
+    .aba-btn.active {
+        background: var(--primary);
+        color: white;
+        border-bottom: none;
+    }
+    
+    .aba-btn:hover:not(.active) {
+        background: var(--gray-light);
+    }
+    
+    /* Cards responsivos */
+    .card-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .card-header h3 {
+        text-align: center;
+    }
+    
+    /* Tabela responsiva (rolagem horizontal) */
+    .tabela-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .tabela-moderna {
+        min-width: 600px;
+    }
+    
+    /* Filtros responsivos */
+    .filtros-presenca,
+    .filtros-vistos {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filtros-presenca .campo,
+    .filtros-vistos .campo {
+        width: 100%;
+    }
+    
+    .select-disciplina {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    /* Relatórios responsivos */
+    .relatorios-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Modal responsivo */
+    .modal-conteudo {
+        width: 95%;
+        margin: 20% auto;
+        padding: 20px;
+    }
+    
+    /* Botões responsivos */
+    .acoes-card {
+        flex-direction: column;
+    }
+    
+    .acoes-card .btn {
+        width: 100%;
+    }
+    
+    /* Aulas container */
+    .aula-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .tabela-presenca {
+        font-size: 0.85rem;
+    }
+    
+    .tabela-presenca td {
+        padding: 6px;
+    }
+}
+
+/* Mobile Pequeno */
+@media (max-width: 480px) {
+    .turma-titulo h1 {
+        font-size: 1.2rem;
+    }
+    
+    .turma-titulo::before {
+        font-size: 1.4rem;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .input-numero {
+        width: 60px;
+    }
+    
+    .card-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .logo h2 {
+        font-size: 1.1rem;
+    }
+    
+    .relatorio-card h4 {
+        font-size: 1rem;
+    }
+    
+    .badge {
+        padding: 3px 8px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Landscape (celular deitado) */
+@media (max-height: 500px) and (orientation: landscape) {
+    .modal-conteudo {
+        margin: 5% auto;
+    }
+    
+    .aulas-container {
+        max-height: 300px;
+    }
+}
